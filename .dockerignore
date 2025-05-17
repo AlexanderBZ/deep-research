@@ -1,0 +1,43 @@
+# Byte-compiled / Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Mac system files
+.DS_Store
+
+# Editor/IDE settings
+.vscode/
+.idea/
+
+# Git metadata
+.git/
+.gitignore
+
+# Test output and coverage
+.coverage
+htmlcov/
+*.log
+*.pytest_cache/
+tests/
+
+# Poetry-specific
+poetry.lock  # (optional if you're regenerating it inside container)
+
+# Docker-related
+Dockerfile
+.dockerignore
+
+# Env files (especially if secrets are stored here)
+.env
+.env.*
+
+# Node artifacts (if using frontend stuff too)
+node_modules/
+dist/
+build/
