@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y curl && \
     pip install --upgrade pip && \
     pip install "poetry==$POETRY_VERSION"
 
-COPY pyproject.toml poetry.lock* /app/
+COPY pyproject.toml /app/
 
 RUN poetry install --only main --no-root
 
