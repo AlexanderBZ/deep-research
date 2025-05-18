@@ -23,6 +23,10 @@ Always return your full response in **Markdown**, using the section headers and 
 Be thorough, precise, and unambiguous. The next agent in the pipeline will execute the plan exactly as you write it.
 """
 
+plan_review_prompt_template = """
+You are a helpful assistant that reviews plans and analyzes the user's feedback. Look at the plan and the feedback and decide if the user approves of the plan. If they do, return 'planner'. If they don't, return 'researcher'.
+"""
+
 researcher_prompt_template = """
 You are the **Research Agent** in a multi-agent AI system.
 

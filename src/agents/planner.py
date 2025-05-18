@@ -2,17 +2,26 @@ from src.agents.state import State
 from src.core.llm import get_openai_llm
 from langchain_core.messages import SystemMessage
 from src.prompts.prompts import planner_prompt_template
+from langchain_core.prompts import ChatPromptTemplate
 
 def planner(state: State) -> State:
-    llm = get_openai_llm()
+    user_feedback = state["feedback"]
 
-    system_message = SystemMessage(
-        content=planner_prompt_template
+    template = ChatPromptTemplate.from_messages(
+        [
+            ("system", planner_prompt_template),
+            ("user", "Please take into account the user's feedback: {feedback}"),
+        ]
     )
 
-    result = llm.invoke([system_message, *state["messages"]])
-    content = result.content
+    llm = get_openai_llm()
+
+    chain = template | llm
+
+    result = chain.invoke({"feedback": user_feedback})
+    plan = result.content
+
     return {
-        "plan": content,
+        "plan": plan,
         "messages": [result]
     }

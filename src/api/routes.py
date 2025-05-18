@@ -13,7 +13,10 @@ def health_check():
 def plan(request: PlanRequest):
     initial_state: State = {
         "messages": [request.query],
-        "plan": ""
+        "plan": "",
+        "feedback": "",
+        "research": "",
+        "final_report": ""
     }
 
     graph = build_graph()
